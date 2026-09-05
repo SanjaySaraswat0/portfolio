@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanjay Saraswat — Full-Stack &amp; AI/ML Engineer</title>
+  <meta name="description"
+    content="Sanjay Saraswat — Full-stack and AI/ML engineer building data-driven decision systems: KisanSetu, AI Trading Journal, MRI Brain Tumor CNN, and more." />
+  <meta property="og:title" content="Sanjay Saraswat — Full-Stack & AI/ML Engineer" />
+  <meta property="og:description"
+    content="Building systems that turn raw data into decisions — from mandi prices to MRI scans." />
+  <meta property="og:type" content="website" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%2308090C%22/><circle cx=%2250%22 cy=%2250%22 r=%229%22 fill=%22%23FF3B30%22/><line x1=%2250%22 y1=%2250%22 x2=%2220%22 y2=%2225%22 stroke=%22%23FF3B30%22 stroke-width=%223%22/><line x1=%2250%22 y1=%2250%22 x2=%2280%22 y2=%2230%22 stroke=%22%2338BDF8%22 stroke-width=%223%22/><line x1=%2250%22 y1=%2250%22 x2=%2265%22 y2=%2278%22 stroke=%22%23818CF8%22 stroke-width=%223%22/></svg>" />
+
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Interactive Full-Page Canvas Background -->
+  <canvas id="bgField"></canvas>
+  <div class="bg-grid"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-spinner"></div>
+      <div class="preloader-word">SANJAY SARASWAT</div>
+      <div class="preloader-sub">FULL-STACK &amp; AI/ML ENGINEER</div>
+    </div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"><span id="cursorLabel"></span></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Noise overlay -->
+  <div class="grain"></div>
+
+  <!-- Toast notification for copy action -->
+  <div class="toast" id="toast">Copied to clipboard! ✨</div>
+
+  <!-- Floating Navigation Bar -->
+  <header class="nav-wrapper">
+    <nav class="nav" id="nav">
+      <a href="#top" class="nav-mark" data-cursor="SS">
+        <span class="mark-gradient">SS</span>
+        <span class="mark-dot"></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about" data-cursor="ABOUT">About</a>
+        <a href="#work" data-cursor="WORK">Projects</a>
+        <a href="#experience" data-cursor="EXP">Experience</a>
+        <a href="#skills" data-cursor="SKILLS">Skills</a>
+        <a href="#contact" data-cursor="TALK">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="nav-status-pill">
+          <span class="status-pulse"></span>
+          <span class="status-text">Open for Roles</span>
+        </div>
+        <a class="nav-cta" href="assets/Sanjay_Saraswat_Resume.pdf" download data-cursor="PDF">
+          <span>Résumé</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#about" class="mob-link">About</a>
+      <a href="#work" class="mob-link">Projects</a>
+      <a href="#experience" class="mob-link">Experience</a>
+      <a href="#skills" class="mob-link">Skills</a>
+      <a href="#contact" class="mob-link">Contact</a>
+      <div class="mob-divider"></div>
+      <a href="assets/Sanjay_Saraswat_Resume.pdf" download class="mob-cta">Download Résumé 📄</a>
+    </div>
+  </div>
+
+  <!-- Side Index Quick Rail -->
+  <aside class="rail" id="rail" aria-label="Page navigation rail">
+    <div class="rail-dot active" data-target="#top"><span>Overview</span></div>
+    <div class="rail-dot" data-target="#about"><span>About</span></div>
+    <div class="rail-dot" data-target="#work"><span>Projects</span></div>
+    <div class="rail-dot" data-target="#experience"><span>Experience</span></div>
+    <div class="rail-dot" data-target="#skills"><span>Skills</span></div>
+    <div class="rail-dot" data-target="#contact"><span>Contact</span></div>
+  </aside>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-inner">
+        <div class="hero-badge reveal-up">
+          <span class="badge-icon">⚡</span>
+          <span>Full-Stack &amp; AI/ML Systems Engineer</span>
+        </div>
+
+        <h1 class="hero-name">
+          <span class="reveal-up hero-line-1" style="--d:0">Sanjay</span>
+          <span class="reveal-up hero-line-2 gradient-text" style="--d:1">Saraswat</span>
+        </h1>
+
+        <p class="hero-statement reveal-up" style="--d:2">
+          I architect intelligent full-stack systems that translate high-complexity real-world data — from agricultural
+          commodity price signals to medical MRI diagnostics — into robust, user-centric decision engines.
+        </p>
+
+        <div class="hero-actions reveal-up" style="--d:3">
+          <a href="#work" class="btn btn-primary" data-cursor="EXPLORE">
+            <span>Explore Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="assets/Sanjay_Saraswat_Resume.pdf" download class="btn btn-glass" data-cursor="DOWNLOAD">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Get Résumé</span>
+          </a>
+          <button class="btn btn-icon-copy" id="heroCopyEmail" data-cursor="COPY" title="Copy Email">
+            <span>sanjaysaraswat299@gmail.com</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Hero Metrics Bar -->
+        <div class="hero-stats reveal-up" style="--d:4">
+          <div class="stat-card">
+            <span class="stat-num">94.2%</span>
+            <span class="stat-label">CNN MRI Accuracy</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-num">80%</span>
+            <span class="stat-label">Entry Automation</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-num">IITM &amp; KIET</span>
+            <span class="stat-label">AI &amp; Data Science</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Production Apps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE TICKER ============ -->
+    <section class="marquee-wrap" aria-label="Core Technical Stack">
+      <div class="marquee" id="marquee">
+        <div class="marquee-track">
+          <span>Python</span><span class="sep">✦</span>
+          <span>TypeScript</span><span class="sep">✦</span>
+          <span>React 19</span><span class="sep">✦</span>
+          <span>Next.js</span><span class="sep">✦</span>
+          <span>FastAPI</span><span class="sep">✦</span>
+          <span>Node.js</span><span class="sep">✦</span>
+          <span>PostgreSQL</span><span class="sep">✦</span>
+          <span>Supabase</span><span class="sep">✦</span>
+          <span>Google Gemini AI</span><span class="sep">✦</span>
+          <span>LangGraph</span><span class="sep">✦</span>
+          <span>Redis</span><span class="sep">✦</span>
+          <span>TensorFlow</span><span class="sep">✦</span>
+          <span>AWS Cloud</span><span class="sep">✦</span>
+          <span>Vue.js</span><span class="sep">✦</span>
+        </div>
+        <div class="marquee-track" aria-hidden="true">
+          <span>Python</span><span class="sep">✦</span>
+          <span>TypeScript</span><span class="sep">✦</span>
+          <span>React 19</span><span class="sep">✦</span>
+          <span>Next.js</span><span class="sep">✦</span>
+          <span>FastAPI</span><span class="sep">✦</span>
+          <span>Node.js</span><span class="sep">✦</span>
+          <span>PostgreSQL</span><span class="sep">✦</span>
+          <span>Supabase</span><span class="sep">✦</span>
+          <span>Google Gemini AI</span><span class="sep">✦</span>
+          <span>LangGraph</span><span class="sep">✦</span>
+          <span>Redis</span><span class="sep">✦</span>
+          <span>TensorFlow</span><span class="sep">✦</span>
+          <span>AWS Cloud</span><span class="sep">✦</span>
+          <span>Vue.js</span><span class="sep">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="bg-ghost" data-parallax-bg="0.25">INSIGHT</div>
+
+      <div class="section-header">
+        <div class="section-tag-wrap">
+          <span class="tag-dot"></span>
+          <span class="section-tag">About Me</span>
+        </div>
+        <h2 class="about-headline">
+          Two fundamental forces drive everything I build: <span class="highlight-text">deep algorithmic
+            reasoning</span> under the hood, and <span class="highlight-text">flawless human usability</span> at the
+          surface.
+        </h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card glass-panel">
+          <div class="card-icon">🎯</div>
+          <h3>The Philosophy</h3>
+          <p>
+            I'm pursuing a B.Tech in Computer Science &amp; AI at KIET Ghaziabad while simultaneously earning a BS in
+            Data Science from IIT Madras. Real-world machine learning shouldn't live in isolated Jupyter notebooks; it
+            belongs embedded directly into responsive web interfaces that solve tangible problems for actual end-users.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel">
+          <div class="card-icon">🚀</div>
+          <h3>Practical Impact</h3>
+          <p>
+            From architecting KisanSetu (an agricultural decision engine evaluating live mandi spreads and net
+            realizations) to deploying deep CNN medical vision pipelines and interning at IIT Ropar's VLED Lab shipping
+            production modules, my focus is always on engineering high-reliability software that delivers concrete
+            clarity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS / WORK ============ -->
+    <section class="work" id="work">
+      <div class="bg-ghost" data-parallax-bg="0.3">SYSTEMS</div>
+
+      <div class="section-header">
+        <div class="section-tag-wrap">
+          <span class="tag-dot"></span>
+          <span class="section-tag">Featured Engineering</span>
+        </div>
+        <div class="work-header-row">
+          <h2 class="work-headline">Selected Systems &amp; Deployments</h2>
+          <p class="work-subtitle">Interactive decision engines, generative AI assistants &amp; full-stack platforms.
+          </p>
+        </div>
+      </div>
+
+      <div class="projects" id="projectsList">
+        <!-- Dynamically generated with rich interactive cards in script.js -->
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="experience" id="experience">
+      <div class="bg-ghost" data-parallax-bg="0.2">JOURNEY</div>
+
+      <div class="section-header">
+        <div class="section-tag-wrap">
+          <span class="tag-dot"></span>
+          <span class="section-tag">Industry Experience</span>
+        </div>
+        <h2 class="section-title">Where I've Contributed</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item glass-panel">
+          <div class="timeline-meta">
+            <div class="timeline-badge">Internship</div>
+            <div class="timeline-date">Jun 2026 — Aug 2026</div>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3>Full-Stack Development Intern — Vinternship</h3>
+              <span class="timeline-tag">IIT Ropar</span>
+            </div>
+            <p class="timeline-org">VLED Lab, IIT Ropar · Mentored under Prof. Sudarshan Iyengar</p>
+            <ul class="timeline-points">
+              <li>Architected and shipped a self-contained Kaprekar's Constant interactive module (React 19, Framer
+                Motion) for Tenali, an open-source math-education codebase, complete with end-to-end animation chain
+                optimization.</li>
+              <li>Collaborated in daily agile standups, participating in peer code reviews, continuous integration
+                pipelines, and full-stack TypeScript/React/Node.js/MongoDB workflows.</li>
+              <li>Engineered dynamic 3D algebraic visualizations in GeoGebra for "Metric's Mystic" and mentored cohort
+                peers on mathematical modeling and visual design.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="skills" id="skills">
+      <div class="bg-ghost" data-parallax-bg="0.3">EXPERTISE</div>
+
+      <div class="section-header">
+        <div class="section-tag-wrap">
+          <span class="tag-dot"></span>
+          <span class="section-tag">Technical Competencies</span>
+        </div>
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">🐍</span>
+            <h3>Languages &amp; Core</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>Python (Pandas, NumPy)</li>
+            <li><span class="bullet"></span>TypeScript / JavaScript</li>
+            <li><span class="bullet"></span>SQL / Relational Schema</li>
+            <li><span class="bullet"></span>C / C++ &amp; Java</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">🤖</span>
+            <h3>AI / ML &amp; GenAI</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>Google Gemini AI &amp; LangGraph</li>
+            <li><span class="bullet"></span>TensorFlow &amp; CNN Architectures</li>
+            <li><span class="bullet"></span>Predictive Modeling &amp; SHAP</li>
+            <li><span class="bullet"></span>Prompt Engineering &amp; AI Agents</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">⚙️</span>
+            <h3>Backend &amp; Distributed</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>FastAPI &amp; Flask</li>
+            <li><span class="bullet"></span>Node.js &amp; Express.js</li>
+            <li><span class="bullet"></span>REST APIs &amp; WebSockets</li>
+            <li><span class="bullet"></span>Redis In-Memory Caching</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">🎨</span>
+            <h3>Frontend Engineering</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>React 19 &amp; Next.js</li>
+            <li><span class="bullet"></span>Vue.js &amp; Framer Motion</li>
+            <li><span class="bullet"></span>Modern CSS / Glassmorphism</li>
+            <li><span class="bullet"></span>Three.js &amp; GSAP Animations</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">☁️</span>
+            <h3>Cloud &amp; Databases</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>PostgreSQL &amp; Supabase</li>
+            <li><span class="bullet"></span>MongoDB &amp; SQLite</li>
+            <li><span class="bullet"></span>AWS Cloud Infrastructure</li>
+            <li><span class="bullet"></span>Git / GitHub CI/CD</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-panel" data-tilt>
+          <div class="skill-header">
+            <span class="skill-icon">🏆</span>
+            <h3>Certifications &amp; Honors</h3>
+          </div>
+          <ul class="skill-list">
+            <li><span class="bullet"></span>AWS ML Engineer — Associate</li>
+            <li><span class="bullet"></span>AWS Data Engineer — Associate</li>
+            <li><span class="bullet"></span>AWS Cloud Practitioner</li>
+            <li><span class="bullet"></span>IITM Foundation Degree</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <div class="contact-glow-orb"></div>
+      <canvas id="contactCanvas"></canvas>
+
+      <div class="contact-container glass-panel">
+        <div class="section-tag-wrap">
+          <span class="tag-dot"></span>
+          <span class="section-tag">Let's Connect</span>
+        </div>
+
+        <h2 class="contact-headline">
+          Let's build intelligent systems that make a lasting difference.
+        </h2>
+
+        <p class="contact-desc">
+          Whether you are looking for a full-stack engineer, AI/ML specialist, or have an exciting problem to solve — my
+          inbox is always open.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card" id="contactCopyCard" data-cursor="COPY">
+            <div class="cc-icon">✉️</div>
+            <div class="cc-info">
+              <span class="cc-label">Direct Email (Click to copy)</span>
+              <span class="cc-value">sanjaysaraswat299@gmail.com</span>
+            </div>
+            <span class="cc-action">Copy 📋</span>
+          </div>
+
+          <a href="https://github.com/SanjaySaraswat0" target="_blank" rel="noopener" class="contact-card"
+            data-cursor="OPEN">
+            <div class="cc-icon">🐙</div>
+            <div class="cc-info">
+              <span class="cc-label">GitHub Profile</span>
+              <span class="cc-value">github.com/SanjaySaraswat0</span>
+            </div>
+            <span class="cc-action">Visit ↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/sanjay-saraswat-273545328/" target="_blank" rel="noopener"
+            class="contact-card" data-cursor="OPEN">
+            <div class="cc-icon">💼</div>
+            <div class="cc-info">
+              <span class="cc-label">LinkedIn Profile</span>
+              <span class="cc-value">linkedin.com/in/sanjay-saraswat</span>
+            </div>
+            <span class="cc-action">Connect ↗</span>
+          </a>
+
+          <a href="assets/Sanjay_Saraswat_Resume.pdf" download class="contact-card" data-cursor="DOWNLOAD">
+            <div class="cc-icon">📄</div>
+            <div class="cc-info">
+              <span class="cc-label">Curriculum Vitae</span>
+              <span class="cc-value">Sanjay_Saraswat_Resume.pdf</span>
+            </div>
+            <span class="cc-action">Download ↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="fb-name">Sanjay Saraswat</span>
+        <span class="fb-role">Full-Stack &amp; AI/ML Engineer</span>
+      </div>
+      <div class="footer-center">
+        <span>Crafted with precision, interactive Three.js &amp; dynamic canvas.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/SanjaySaraswat0" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/sanjay-saraswat-273545328/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:sanjaysaraswat299@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project detail modal overlay -->
+  <div class="overlay" id="overlay" aria-hidden="true" role="dialog" data-lenis-prevent>
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="overlay-container" id="overlayContainer" data-lenis-prevent tabindex="-1">
+      <button class="overlay-close" id="overlayClose" aria-label="Close modal">
+        <span>Close</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="overlay-content" id="overlayContent"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
