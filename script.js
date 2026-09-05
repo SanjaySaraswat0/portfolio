@@ -635,7 +635,7 @@ const PROJECTS = [
     ],
     result: 'Reduced manual trade entry time by 80% with automated statement ingestion and enterprise security standards.',
     github: 'https://github.com/SanjaySaraswat0/trading-journal',
-    live: null
+    live: 'https://www.sanjaysaraswat.me/tradingjournal/login'
   },
   {
     index: '03',
