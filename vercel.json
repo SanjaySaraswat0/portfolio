@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/tradingjournal",
+      "destination": "https://trading-journal-blush-eight.vercel.app"
+    },
+    {
+      "source": "/tradingjournal/:path*",
+      "destination": "https://trading-journal-blush-eight.vercel.app/:path*"
+    }
+  ]
+}
